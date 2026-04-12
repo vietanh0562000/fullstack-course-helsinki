@@ -25,11 +25,11 @@ let notes = [
   }
 ]
 
-app.get('/notes', (req, res) => {
+app.get('/api/notes', (req, res) => {
     res.json(notes)
 })
 
-app.get('/notes/:id', (req, res) => {
+app.get('/api/notes/:id', (req, res) => {
     const id = req.params.id;
     const note = notes.find(n => n.id === id);
     if (note){
@@ -46,7 +46,7 @@ const generateId = () => {
     return maxId + 1;
 }
 
-app.post('/notes', (req, res) => {
+app.post('/api/notes', (req, res) => {
     const body = req.body;
     if (!body.content){
         res.status(500).json({
@@ -64,7 +64,7 @@ app.post('/notes', (req, res) => {
     }
 })
 
-app.put('/notes/:id', (req, res) => {
+app.put('/api/notes/:id', (req, res) => {
     const body = req.body;
     if (!body.content){
         res.status(500).json({
@@ -85,7 +85,7 @@ app.put('/notes/:id', (req, res) => {
 })
 
 
-app.delete('/notes/:id', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
     const id = req.params.id;
     notes = notes.filter(n => n.id !== id);
     res.status(200).json('Delete successfully');

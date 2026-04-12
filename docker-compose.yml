@@ -20,5 +20,5 @@ services:
     build:
       context: ./part3
     expose:
-      - "3000"
+      - "3001"
     restart: unless-stopped
